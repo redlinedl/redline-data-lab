@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://redline-data.xyz/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Block common bot paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Allow important pages
+Allow: /index.html
+Allow: /#services
+Allow: /#form
