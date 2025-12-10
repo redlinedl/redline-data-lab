@@ -207,9 +207,18 @@
       display:grid;gap:10px;
     }
     label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
-    input[type=text],input[type=email],input[type=url],select,textarea{
+    input[type=text],input[type=email],select,textarea{
       width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);
-      background:transparent;color:var(--text);
+      background:var(--surface);color:var(--text);
+    }
+    select{
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+    }
+    select option{
+      background:var(--surface);
+      color:var(--text);
     }
     textarea{min-height:100px;resize:vertical}
     .row{display:flex;gap:10px;flex-wrap:wrap}
@@ -322,7 +331,7 @@
         <p style="margin:0 0 10px 0;color:var(--muted)">Fill the short form and we’ll send your audit and 3 quick improvements.</p>
 
         <!-- Netlify-ready form -->
-        <form class="contact" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="#form">
+        <form class="contact" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
           <input type="hidden" name="form-name" value="contact">
           <input type="hidden" name="source" value="site">
 
@@ -353,7 +362,7 @@
           <div class="row">
             <div class="full">
               <label for="site">Website or Instagram</label>
-              <input id="site" name="site" type="url" placeholder="https://..." />
+              <input id="site" name="site" type="text" placeholder="yourwebsite.com or @handle (optional)" />
             </div>
           </div>
 
