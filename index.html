@@ -329,42 +329,49 @@
             <h3>📝 Free Mini Audit — $0</h3>
             <p>Quick look at your current website or online presence with notes written in plain language.</p>
             <p>You see what is helping, what is holding you back, and where small changes can make a difference.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn ghost" href="#form">Start with this free audit</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>🔍 Quick Visibility Check — $15</h3>
             <p>Basic scan that shows where your business does or does not appear online.</p>
             <p>Helps you see if customers can actually find you when they search or look at maps and local listings.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/quick-visibility-placeholder" target="_blank" rel="noopener noreferrer">Get this for $15</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>📇 Lead Micro Pack — $20</h3>
             <p>A small, ready-to-use list of local contacts who match your ideal customer.</p>
             <p>Gives you a focused group of people to reach out to this week.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/lead-micro-pack-placeholder" target="_blank" rel="noopener noreferrer">Get this for $20</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>🎨 Content Refresh Kit — $25</h3>
             <p>Short, clear updates for your posts and profile so you look current and easy to understand.</p>
             <p>Includes a handful of fresh captions and simple ideas you can plug in right away.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/content-refresh-placeholder" target="_blank" rel="noopener noreferrer">Get this for $25</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>📋 Local Listing Cleanup Checklist — $10</h3>
             <p>Step-by-step checklist that helps you fix common problems on maps and local listings.</p>
             <p>Makes it easier for nearby customers to find you and trust the details they see.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/listing-cleanup-placeholder" target="_blank" rel="noopener noreferrer">Get this for $10</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>⚙️ Starter SOP Packet — $15</h3>
             <p>Simple, written steps for a few everyday tasks you repeat over and over.</p>
             <p>Helps you hand off work or do it the same way every time without thinking about it.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/starter-sop-placeholder" target="_blank" rel="noopener noreferrer">Get this for $15</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>🎁 Starter Bundle Pack — $60 (saves $25)</h3>
             <p>Quick Visibility Check, Lead Micro Pack, Content Refresh Kit, Local Listing Cleanup Checklist, and Starter SOP Packet in one bundle.</p>
             <p>Best if you want a full picture of what is going on and a clear list of simple next steps.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/starter-bundle-placeholder" target="_blank" rel="noopener noreferrer">Get the Starter Bundle – $60</a></p>
           </div>
         </div>
 
@@ -377,17 +384,20 @@
           <div class="card" role="listitem">
             <h3>📱 Missed-Call Auto Text-Back — $299/mo</h3>
             <p>Never lose a lead because you were busy. Every missed call gets a friendly text right away that keeps the conversation going and increases bookings.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/missed-call-textback-placeholder" target="_blank" rel="noopener noreferrer">Start for $299/mo</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>💬 High-Conversion Chatbot — $299/mo</h3>
             <p>A simple helper that answers questions, guides visitors, and encourages them to book or contact you. Always on, always helpful.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/high-conversion-chatbot-placeholder" target="_blank" rel="noopener noreferrer">Start for $299/mo</a></p>
           </div>
 
           <div class="card" role="listitem">
             <h3>📂 All-In-One Messaging Platform — $399/mo</h3>
             <p>All messages in one place so nothing gets lost. Text, email, DMs, voicemail, and video requests stay clean and organized.</p>
             <p>Built for dentists, medspas, home-service pros, and any business that books clients and needs a simple way to keep up.</p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/all-in-one-messaging-placeholder" target="_blank" rel="noopener noreferrer">Start for $399/mo</a></p>
           </div>
         </div>
       </section>
@@ -529,18 +539,30 @@
         setTheme(current === 'dark' ? 'light' : 'dark');
       });
 
-      // Smooth scroll with analytics
-      document.getElementById('jumpForm').addEventListener('click', function(e){
-        e.preventDefault();
-        document.getElementById('form').scrollIntoView({behavior:'smooth'});
-        
-        // Track CTA click
-        if(typeof gtag !== 'undefined'){
-          gtag('event', 'cta_click', {
-            'button_text': 'Get a Free Mini Audit',
-            'event_category': 'engagement'
-          });
-        }
+      // Smooth scroll with analytics for any link that jumps to the form
+      var formLinks = [];
+      var mainCta = document.getElementById('jumpForm');
+      if(mainCta) formLinks.push(mainCta);
+      document.querySelectorAll('a[href="#form"]').forEach(function(el){
+        if(el !== mainCta) formLinks.push(el);
+      });
+
+      formLinks.forEach(function(link){
+        link.addEventListener('click', function(e){
+          e.preventDefault();
+          var target = document.getElementById('form');
+          if(target){
+            target.scrollIntoView({behavior:'smooth'});
+          }
+
+          // Track CTA click
+          if(typeof gtag !== 'undefined'){
+            gtag('event', 'cta_click', {
+              'button_text': link.textContent.trim(),
+              'event_category': 'engagement'
+            });
+          }
+        });
       });
 
       // Form validation
