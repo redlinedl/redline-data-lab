@@ -87,23 +87,44 @@
   </script>
   <style>
     :root{
-      --bg:#ffffff;
-      --surface:#ffffff;
-      --muted:#666666;
-      --text:#111111;
-      --accent:#d31c1c;
-      --card-shadow: 0 6px 20px rgba(17,17,17,0.06);
+      /* Color system */
+      --color-bg-light:#ffffff;
+      --color-bg-dark:#0d0d0d;
+      --color-text-light:#1a1a1a;
+      --color-text-dark:#e6e6e6;
+      --color-accent:#ff3232;
+      --color-accent-soft:#ff6767;
+      --color-muted:#888888;
+      --color-surface-light:#f6f6f6;
+      --color-surface-dark:#1a1a1a;
+
+      /* Legacy tokens mapped to new system */
+      --bg:var(--color-bg-light);
+      --surface:var(--color-surface-light);
+      --muted:var(--color-muted);
+      --text:var(--color-text-light);
+      --accent:var(--color-accent);
+      --card-shadow:0 6px 20px rgba(0,0,0,0.06);
+
+      /* Radius, spacing, layout */
       --radius:12px;
-      --gap:16px;
-      --maxwidth:820px;
+      --gap:16px;          /* base 8px grid (2 * 8) */
+      --space-1:8px;
+      --space-2:16px;
+      --space-3:24px;
+      --space-4:32px;
+      --space-5:48px;
+      --space-6:64px;
+      --maxwidth:1080px;
+      --content-width:640px;
     }
     [data-theme="dark"]{
-      --bg:#0b0b0c;
-      --surface:#0f1113;
+      --bg:var(--color-bg-dark);
+      --surface:var(--color-surface-dark);
       --muted:#9aa0a6;
-      --text:#f4f6f7;
-      --accent:#ff6b6b;
-      --card-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      --text:var(--color-text-dark);
+      --accent:var(--color-accent-soft);
+      --card-shadow:0 6px 20px rgba(0,0,0,0.6);
     }
 
     /* Basic reset & layout */
@@ -116,15 +137,15 @@
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
+      line-height:1.6;
       display:flex;
       justify-content:center;
-      padding:24px;
+      padding:var(--space-3);
     }
     .wrap{
       width:100%;
       max-width:var(--maxwidth);
-      margin:12px;
+      margin:var(--space-2);
     }
 
     /* Header */
@@ -133,7 +154,7 @@
       justify-content:space-between;
       align-items:center;
       gap:var(--gap);
-      margin-bottom:18px;
+      margin-bottom:var(--space-3);
     }
     .brand{
       display:flex;
@@ -157,24 +178,29 @@
       background:var(--surface);
       border-radius:var(--radius);
       box-shadow:var(--card-shadow);
-      padding:20px;
-      margin-bottom:18px;
+      padding:var(--space-4);
+      margin-bottom:var(--space-3);
     }
     .hero h1{
-      margin:0 0 8px 0;
-      font-size:20px;
-      line-height:1.1;
+      margin:0 0 var(--space-2) 0;
+      font-size:clamp(24px,5vw,34px);
+      line-height:1.15;
     }
-    .hero p{margin:0;color:var(--muted)}
-    .cta-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:var(--content-width);
+    }
+    .cta-row{display:flex;gap:var(--space-2);margin-top:var(--space-3);flex-wrap:wrap}
     .btn{
       background:var(--accent);
       color:white;
-      padding:10px 14px;
-      border-radius:10px;
+      padding:14px 22px;
+      border-radius:8px;
       text-decoration:none;
       display:inline-block;
-      font-weight:700;
+      font-weight:600;
+      font-size:15px;
       border:0;cursor:pointer;
     }
     .btn.ghost{
@@ -184,27 +210,33 @@
     /* Services quick list */
     .cards{
       display:grid;
-      gap:12px;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      margin:18px 0;
+      gap:var(--space-2);
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      margin:var(--space-3) 0;
     }
     .card{
       background:var(--surface);
-      border-radius:12px;padding:14px;box-shadow:var(--card-shadow);
+      border-radius:12px;
+      padding:var(--space-3);
+      box-shadow:var(--card-shadow);
+      border:1px solid rgba(0,0,0,0.03);
     }
-    .card h3{margin:0 0 6px 0;font-size:15px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
+    [data-theme="dark"] .card{
+      border-color:rgba(255,255,255,0.08);
+    }
+    .card h3{margin:0 0 var(--space-1) 0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px;max-width:var(--content-width)}
 
     /* Process & benefits */
-    .simple-list{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+    .simple-list{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-3) 0}
     .simple-list .item{display:flex;gap:10px;align-items:flex-start}
     .badge{width:36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700}
 
     /* Form */
     form.contact{
-      background:var(--surface);padding:16px;border-radius:12px;box-shadow:var(--card-shadow);
-      margin-top:10px;
-      display:grid;gap:10px;
+      background:var(--surface);padding:var(--space-3);border-radius:12px;box-shadow:var(--card-shadow);
+      margin-top:var(--space-2);
+      display:grid;gap:var(--space-2);
     }
     label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
     input[type=text],input[type=email],select,textarea{
@@ -221,13 +253,13 @@
       color:var(--text);
     }
     textarea{min-height:100px;resize:vertical}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .row{display:flex;gap:var(--space-2);flex-wrap:wrap}
     .small{flex:1 1 160px}
     .full{flex:1 1 100%}
     .note{font-size:13px;color:var(--muted);margin-top:6px}
 
     /* Footer */
-    footer{margin-top:18px;font-size:13px;color:var(--muted);text-align:center}
+    footer{margin-top:var(--space-4);font-size:13px;color:var(--muted);text-align:center}
 
     /* Responsive tweaks */
     @media(min-width:880px){
@@ -287,32 +319,75 @@
       </section>
 
       <section id="services" aria-labelledby="services-title">
-        <h2 style="font-size:16px;margin:6px 0 12px 0" id="services-title">Fast Services — Real Results</h2>
+        <h2 style="font-size:16px;margin:6px 0 4px 0" id="services-title">Starter Tools</h2>
+        <p style="margin:0 0 12px 0;color:var(--muted);max-width:var(--content-width)">
+          Simple, low-pressure tools that give you quick wins and a clear picture of what is happening in your business.
+        </p>
 
-        <div class="cards" role="list">
+        <div class="cards" role="list" aria-label="Starter tools">
           <div class="card" role="listitem">
-            <h3>📝 Free Mini Audit</h3>
-            <p>We check where you show up online and give 3 quick fixes you can use right away. Free.</p>
+            <h3>📝 Free Mini Audit — $0</h3>
+            <p>Quick look at your current website or online presence with notes written in plain language.</p>
+            <p>You see what is helping, what is holding you back, and where small changes can make a difference.</p>
           </div>
 
           <div class="card" role="listitem">
-            <h3>📇 25-Lead Pack — $20</h3>
-            <p>A tidy, ready-to-use list of 25 local contacts you can reach out to today.</p>
+            <h3>🔍 Quick Visibility Check — $15</h3>
+            <p>Basic scan that shows where your business does or does not appear online.</p>
+            <p>Helps you see if customers can actually find you when they search or look at maps and local listings.</p>
           </div>
 
           <div class="card" role="listitem">
-            <h3>🎨 Content Refresh — $25</h3>
-            <p>7 improved captions and simple post templates so your profile looks fresh and smart.</p>
+            <h3>📇 Lead Micro Pack — $20</h3>
+            <p>A small, ready-to-use list of local contacts who match your ideal customer.</p>
+            <p>Gives you a focused group of people to reach out to this week.</p>
           </div>
 
           <div class="card" role="listitem">
-            <h3>📍 Listing Cleanup — $10</h3>
-            <p>Step-by-step tweaks so customers can find you faster on maps and search.</p>
+            <h3>🎨 Content Refresh Kit — $25</h3>
+            <p>Short, clear updates for your posts and profile so you look current and easy to understand.</p>
+            <p>Includes a handful of fresh captions and simple ideas you can plug in right away.</p>
           </div>
 
           <div class="card" role="listitem">
-            <h3>⚙️ Starter Pack — $15</h3>
-            <p>Simple weekly steps to save time and keep things running smoothly.</p>
+            <h3>� Local Listing Cleanup Checklist — $10</h3>
+            <p>Step-by-step checklist that helps you fix common problems on maps and local listings.</p>
+            <p>Makes it easier for nearby customers to find you and trust the details they see.</p>
+          </div>
+
+          <div class="card" role="listitem">
+            <h3>⚙️ Starter SOP Packet — $15</h3>
+            <p>Simple, written steps for a few everyday tasks you repeat over and over.</p>
+            <p>Helps you hand off work or do it the same way every time without thinking about it.</p>
+          </div>
+
+          <div class="card" role="listitem">
+            <h3>🎁 Starter Bundle Pack — $60 (saves $25)</h3>
+            <p>Quick Visibility Check, Lead Micro Pack, Content Refresh Kit, Local Listing Cleanup Checklist, and Starter SOP Packet in one bundle.</p>
+            <p>Best if you want a full picture of what is going on and a clear list of simple next steps.</p>
+          </div>
+        </div>
+
+        <h2 style="font-size:16px;margin:24px 0 4px 0">Monthly Growth Tools</h2>
+        <p style="margin:0 0 12px 0;color:var(--muted);max-width:var(--content-width)">
+          Ongoing tools that quietly handle the busy work and help you turn more callers and visitors into real bookings.
+        </p>
+
+        <div class="cards" role="list" aria-label="Monthly growth tools">
+          <div class="card" role="listitem">
+            <h3>📱 Missed-Call Auto Text-Back — $299/mo</h3>
+            <p>Never lose a lead because you were busy. Every missed call gets a friendly text right away that keeps the conversation going and increases bookings.</p>
+          </div>
+
+          <div class="card" role="listitem">
+            <h3>💬 High-Conversion Chatbot — $299/mo</h3>
+            <p>A simple helper that answers questions, guides visitors, and encourages them to book or contact you. Always on, always helpful.</p>
+          </div>
+
+          <div class="card" role="listitem">
+            <h3>📂 All-In-One Messaging Platform — $399/mo</h3>
+            <p>All messages in one place so nothing gets lost. Text, email, DMs, voicemail, and video requests stay clean and organized.</p>
+            <p>Built for dentists, medspas, home-service pros, and any business that books clients and needs a simple way to keep up.</p>
           </div>
         </div>
       </section>
@@ -361,7 +436,7 @@
 
           <div class="row">
             <div class="full">
-              <label for="site">Website or Instagram</label>
+              <label for="site">Website or social page</label>
               <input id="site" name="site" type="text" placeholder="yourwebsite.com or @handle (optional)" />
             </div>
           </div>
