@@ -510,8 +510,10 @@
         }
       });
 
-      // Enhanced form submission
+      // Enhanced form submission (AJAX to Netlify so page stays put)
       form.addEventListener('submit', function(e){
+        e.preventDefault();
+
         let isValid = true;
         
         // Validate required fields
@@ -524,30 +526,53 @@
         if(!validateField(service, 'Please select a service')) isValid = false;
         
         if(!isValid){
-          e.preventDefault();
           return;
         }
 
         // Show loading state
         submitBtn.classList.add('loading');
         submitBtn.textContent = 'Sending...';
-        
-        // Track form submission
-        if(typeof gtag !== 'undefined'){
-          gtag('event', 'form_submit', {
-            'service_type': service.value,
-            'event_category': 'conversion'
-          });
+
+        // Prepare data Netlify expects
+        const formData = new FormData(form);
+        // Netlify looks for this field name
+        if(!formData.get('form-name')){
+          formData.set('form-name', form.getAttribute('name') || 'contact');
         }
 
-        // Show success message after delay
-        setTimeout(function(){
+        const encoded = new URLSearchParams(formData).toString();
+
+        // Send to same path so Netlify Forms can capture it
+        fetch(form.getAttribute('action') || '/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encoded
+        }).then(function(){
+          // Track form submission
+          if(typeof gtag !== 'undefined'){
+            gtag('event', 'form_submit', {
+              'service_type': service.value,
+              'event_category': 'conversion'
+            });
+          }
+
+          // Reset button and show success
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = '✨ Send My Free Mini Audit';
+
           const success = document.getElementById('success');
           if(success){ 
             success.style.display = 'block';
             success.scrollIntoView({behavior:'smooth'});
           }
-        }, 400);
+
+          // Optional: clear non-required fields
+          form.reset();
+        }).catch(function(err){
+          console.error('Form submission failed', err);
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = 'Try again';
+        });
       });
 
       // URL parameter prefill
