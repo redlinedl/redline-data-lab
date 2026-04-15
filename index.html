@@ -335,8 +335,9 @@
 
     /* Skip link for accessibility */
     .skip-link{
-      position:absolute;top:-40px;left:6px;background:var(--accent);color:white;
-      padding:8px;text-decoration:none;border-radius:4px;z-index:1000;
+      position:fixed;top:-100%;left:6px;background:var(--accent);color:white;
+      padding:8px;text-decoration:none;border-radius:4px;z-index:2100;
+      transition:top 0.1s;
     }
     .skip-link:focus{top:6px}
 
