@@ -176,6 +176,19 @@
       0%,100%{box-shadow:0 0 4px 1px rgba(255,40,0,0.45)}
       50%     {box-shadow:0 0 10px 3px rgba(255,40,0,0.8)}
     }
+    @keyframes badge-glow{
+      0%,100%{box-shadow:0 0 5px 1px rgba(255,40,0,0.5),0 2px 8px rgba(255,40,0,0.3)}
+      50%     {box-shadow:0 0 12px 3px rgba(255,40,0,0.85),0 2px 14px rgba(255,40,0,0.5)}
+    }
+    .popular-badge{
+      position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+      color:white;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:700;
+      white-space:nowrap;
+      background:linear-gradient(90deg,#ff2800 55%,#ff6a00 72%,#fff6 78%,#ff6a00 84%,#ff2800 100%);
+      background-size:250% auto;
+      animation:surge 2s linear infinite, badge-glow 2s ease-in-out infinite;
+      letter-spacing:0.03em;
+    }
     .scroll-progress__bar{
       height:100%;
       width:0%;
@@ -407,7 +420,7 @@
           </div>
 
           <div class="card" role="listitem" style="border:2px solid var(--accent);position:relative">
-            <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:white;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600">Most Popular</div>
+            <div class="popular-badge">Most Popular</div>
             <h3>Standard — $399/mo</h3>
             <p style="font-weight:600;color:var(--text);margin-bottom:8px">Complete Response System</p>
             <p>Automatically respond to missed calls, website inquiries, and chat messages so appointment requests and job opportunities do not get lost.</p>
