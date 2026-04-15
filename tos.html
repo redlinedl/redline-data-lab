@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Redline Data Lab</title>
+  <meta name="description" content="Checkout and subscription terms for Redline Data Lab." />
+  <link rel="canonical" href="https://redline-data.xyz/tos.html" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <script>
+    (function(){
+      try{
+        var t=localStorage.getItem('theme');
+        if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){
+          document.documentElement.setAttribute('data-theme','dark');
+        }
+      }catch(e){}
+    })();
+  </script>
+  <style>
+    :root{
+      --color-bg-light:#ffffff;
+      --color-bg-dark:#0d0d0d;
+      --color-text-light:#1a1a1a;
+      --color-text-dark:#e6e6e6;
+      --color-accent:#ff3232;
+      --color-accent-soft:#ff4040;
+      --color-muted:#888888;
+      --color-surface-light:#f6f6f6;
+      --color-surface-dark:#1a1a1a;
+      --bg:var(--color-bg-light);
+      --surface:var(--color-surface-light);
+      --muted:var(--color-muted);
+      --text:var(--color-text-light);
+      --accent:var(--color-accent);
+      --card-shadow:0 6px 20px rgba(0,0,0,0.06);
+      --radius:12px;
+      --maxwidth:720px;
+    }
+    [data-theme="dark"]{
+      --bg:var(--color-bg-dark);
+      --surface:var(--color-surface-dark);
+      --muted:#9aa0a6;
+      --text:var(--color-text-dark);
+      --accent:var(--color-accent-soft);
+      --card-shadow:0 6px 20px rgba(0,0,0,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.7;
+      padding:24px 16px 48px;
+    }
+    .wrap{max-width:var(--maxwidth);margin:0 auto}
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:32px;
+      padding-bottom:16px;
+      border-bottom:1px solid rgba(128,128,128,0.15);
+    }
+    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--text)}
+    .logo{width:36px;height:36px;border-radius:8px;overflow:hidden;box-shadow:var(--card-shadow)}
+    .logo img{display:block;width:100%;height:100%;object-fit:contain}
+    .site-name{font-weight:700;font-size:15px}
+    .back{font-size:13px;color:var(--accent);text-decoration:none}
+    .back:hover{text-decoration:underline}
+    .mode-toggle{border:0;background:transparent;font-size:20px;cursor:pointer;padding:6px;border-radius:8px}
+    h1{font-size:clamp(22px,4vw,30px);margin:0 0 8px 0;line-height:1.2}
+    .effective{font-size:13px;color:var(--muted);margin-bottom:32px}
+    h2{font-size:16px;font-weight:700;margin:28px 0 6px 0;color:var(--text)}
+    p,li{font-size:15px;color:var(--text);margin:0 0 10px 0}
+    ul{padding-left:20px;margin:0 0 12px 0}
+    li{margin-bottom:4px}
+    a{color:var(--accent)}
+    footer{
+      margin-top:48px;
+      padding-top:16px;
+      border-top:1px solid rgba(128,128,128,0.15);
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+    }
+    footer a{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/">
+        <div class="logo"><img src="/assets/site_logo.png" alt="Redline Data Lab" width="36" height="36" loading="eager" /></div>
+        <span class="site-name">Redline Data Lab</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:12px">
+        <a class="back" href="/">← Back to site</a>
+        <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <h1>Terms of Service</h1>
+      <p class="effective">Last updated: April 15, 2026</p>
+
+      <p>By completing your purchase, you agree to the following terms. Please read carefully before subscribing.</p>
+
+      <h2>1. Subscription &amp; Billing</h2>
+      <p>You are purchasing a recurring subscription to Redline Data Lab. Your payment method will be automatically charged on a monthly basis unless you cancel before the next billing date.</p>
+
+      <h2>2. No Refund Policy</h2>
+      <p>All sales are final. No refunds will be issued. This includes partial billing periods, unused time, or dissatisfaction with results.</p>
+
+      <h2>3. Cancellation</h2>
+      <p>You may cancel at any time before your next billing date. Cancellation stops future charges only — no prorated refunds will be issued for any remaining time in the current billing period.</p>
+
+      <h2>4. Results Disclaimer</h2>
+      <p>Redline Data Lab does not guarantee leads, revenue, or specific outcomes. Results may vary based on your business type, industry, and market conditions.</p>
+
+      <h2>5. Chargebacks &amp; Disputes</h2>
+      <p>You agree to contact support at <a href="mailto:hello@redline-data.xyz">hello@redline-data.xyz</a> before initiating any dispute or chargeback with your card issuer. Unauthorized chargebacks are a violation of this agreement. You are responsible for any fees, penalties, or costs incurred as a result of disputes.</p>
+
+      <h2>6. Authorization</h2>
+      <p>You confirm that you are authorized to use the payment method provided. You authorize Redline Data Lab to charge your card in accordance with these terms on a recurring monthly basis.</p>
+
+      <h2>7. Acceptance</h2>
+      <p>By completing your purchase, you:</p>
+      <ul>
+        <li>Agree to these Terms of Service</li>
+        <li>Acknowledge the no-refund policy</li>
+        <li>Authorize recurring monthly charges until cancellation</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        Redline Data Lab<br />
+        <a href="mailto:hello@redline-data.xyz">hello@redline-data.xyz</a><br />
+        411-E Rose Lake Drive<br />
+        Charlotte, NC 28217
+      </p>
+    </main>
+
+    <footer>
+      <div>© <strong>Redline Data Lab</strong></div>
+      <div style="margin-top:4px">
+        <a href="/tos.html">Terms of Service</a> &nbsp;·&nbsp;
+        <a href="/privacy.html">Privacy Policy</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    var toggle = document.getElementById('modeToggle');
+    function applyTheme(t){
+      document.documentElement.setAttribute('data-theme', t);
+      toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+      try{localStorage.setItem('theme', t);}catch(e){}
+    }
+    toggle.addEventListener('click', function(){
+      applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+    applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+  </script>
+</body>
+</html>
