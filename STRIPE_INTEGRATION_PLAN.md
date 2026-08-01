@@ -5,10 +5,8 @@ Plan for integrating Stripe payments to monetize the paid services offered by Re
 
 ## 💰 Services & Pricing
 - **Free Mini Audit** - $0 (lead magnet)
-- **25-Lead Pack** - $20
-- **Content Refresh** - $25  
-- **Listing Cleanup** - $10
-- **Starter Pack** - $15
+- **Starter Plan** - $299/month (OFFER-001 internal reference)
+- **Pro Plan** - $599/month (OFFER-002 internal reference)
 
 ## 🏗 Architecture
 
@@ -96,12 +94,12 @@ Plan for integrating Stripe payments to monetize the paid services offered by Re
 ### Payment Link Integration
 ```javascript
 // Add to form submission handler
+// Internal mapping: OFFER-001 = Starter, OFFER-002 = Pro
+// Stripe test checkout links only (not production)
 if(service.value !== 'free-audit') {
   const paymentLinks = {
-    'lead-pack': 'https://buy.stripe.com/test_xxx',
-    'content-refresh': 'https://buy.stripe.com/test_yyy',
-    'listing-cleanup': 'https://buy.stripe.com/test_zzz',
-    'starter-pack': 'https://buy.stripe.com/test_aaa'
+    'starter': 'https://checkout.redline-data.xyz/b/test_eVq7sE0bj75ldMDgBp5os00',
+    'pro': 'https://checkout.redline-data.xyz/b/test_aFa9AM7DLexN8sjgBp5os01'
   };
   
   window.location.href = paymentLinks[service.value];

@@ -44,12 +44,12 @@
     "description": "Quick, affordable fixes for small businesses to improve their online presence",
     "url": "https://redline-data.xyz",
     "email": "hello@redline-data.xyz",
-    "priceRange": "$10-$25",
+    "priceRange": "$299-$599",
     "areaServed": "Worldwide",
     "serviceType": "Digital Marketing Services",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Digital Marketing Services",
+      "name": "Response System Services",
       "itemListElement": [
         {
           "@type": "Offer",
@@ -65,20 +65,20 @@
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "25-Lead Pack",
-            "description": "Ready-to-use list of 25 local contacts"
+            "name": "Starter Response System",
+            "description": "Automatically respond when someone calls and no one answers, and follow up with new inquiries"
           },
-          "price": "20",
+          "price": "299",
           "priceCurrency": "USD"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Content Refresh",
-            "description": "7 improved captions and post templates"
+            "name": "Pro Response System",
+            "description": "Full response setup for higher-volume, multiple-location, or priority-service customers"
           },
-          "price": "25",
+          "price": "599",
           "priceCurrency": "USD"
         }
       ]
@@ -397,30 +397,25 @@
           When someone reaches out to your business, they expect a quick response. This system helps make sure every call, message, or request gets one.
         </p>
 
+        <!-- Pricing Configuration: Two public plans (Starter, Pro) with internal offer IDs -->
+        <!-- Internal mapping: OFFER-001 = Starter, OFFER-002 = Pro -->
+        <!-- Stripe test checkout links only (not production) -->
         <div class="cards" role="list" aria-label="Pricing plans">
           <div class="card" role="listitem">
             <h3>Starter — $299/mo</h3>
             <p style="font-weight:600;color:var(--text);margin-bottom:8px">Starter Response System</p>
             <p>Automatically respond when someone calls and no one answers, and follow up with new inquiries so potential customers do not slip away.</p>
             <p style="margin-top:var(--space-2);font-size:13px;color:var(--muted)">Cancel anytime.</p>
-            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/eVq7sE0bj75ldMDgBp5os00" target="_blank" rel="noopener noreferrer">Start Starter Plan</a></p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://checkout.redline-data.xyz/b/test_eVq7sE0bj75ldMDgBp5os00" target="_blank" rel="noopener noreferrer">Start Starter Plan (Test)</a></p>
           </div>
 
           <div class="card" role="listitem" style="border:2px solid var(--accent);position:relative">
             <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:white;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600">Most Popular</div>
-            <h3>Standard — $399/mo</h3>
-            <p style="font-weight:600;color:var(--text);margin-bottom:8px">Complete Response System</p>
-            <p>Automatically respond to missed calls, website inquiries, and chat messages so appointment requests and job opportunities do not get lost.</p>
-            <p style="margin-top:var(--space-2);font-size:13px;color:var(--muted)">Cancel anytime.</p>
-            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/aFa9AM7DLexN8sjgBp5os01" target="_blank" rel="noopener noreferrer">Get Started</a></p>
-          </div>
-
-          <div class="card" role="listitem">
             <h3>Pro — $599/mo</h3>
             <p style="font-weight:600;color:var(--text);margin-bottom:8px">Advanced Response System</p>
-            <p>A full response setup for higher-volume businesses to ensure every inquiry, call, or message receives a fast reply.</p>
+            <p>A full response setup for higher-volume, multiple-location, or priority-service customers to ensure every inquiry, call, or message receives a fast reply.</p>
             <p style="margin-top:var(--space-2);font-size:13px;color:var(--muted)">Cancel anytime.</p>
-            <p style="margin-top:var(--space-2)"><a class="btn" href="https://buy.stripe.com/4gMaEQcY5fBR23Vad15os02" target="_blank" rel="noopener noreferrer">Start Pro Plan</a></p>
+            <p style="margin-top:var(--space-2)"><a class="btn" href="https://checkout.redline-data.xyz/b/test_aFa9AM7DLexN8sjgBp5os01" target="_blank" rel="noopener noreferrer">Start Pro Plan (Test)</a></p>
           </div>
         </div>
       </section>
@@ -481,7 +476,6 @@
                 <option value="">Choose one</option>
                 <option value="free-audit">Free Mini Audit</option>
                 <option value="starter">Starter — $299/mo</option>
-                <option value="standard">Standard — $399/mo</option>
                 <option value="pro">Pro — $599/mo</option>
               </select>
             </div>
