@@ -95,11 +95,10 @@ Plan for integrating Stripe payments to monetize the paid services offered by Re
 ```javascript
 // Add to form submission handler
 // Internal mapping: OFFER-001 = Starter, OFFER-002 = Pro
-// Stripe test checkout links only (not production)
 if(service.value !== 'free-audit') {
   const paymentLinks = {
-    'starter': 'https://checkout.redline-data.xyz/b/test_eVq7sE0bj75ldMDgBp5os00',
-    'pro': 'https://checkout.redline-data.xyz/b/test_aFa9AM7DLexN8sjgBp5os01'
+    'starter': 'https://buy.stripe.com/eVq7sE0bj75ldMDgBp5os00',
+    'pro': 'https://buy.stripe.com/4gMaEQcY5fBR23Vad15os02'
   };
   
   window.location.href = paymentLinks[service.value];
