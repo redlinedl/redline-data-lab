@@ -22,11 +22,11 @@ End users opt in at https://redline-data.xyz/request-info by completing a reques
 
 ## Consent Disclosure Version
 
-**Version:** sms-consent-v1.0
+**Version:** sms-consent-v1.1
 
 ## Exact Disclosure Text
 
-"Yes, I agree to receive recurring SMS messages from Redline Data Lab about requested service information, appointment reminders, onboarding and account updates, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our Terms and Privacy Policy."
+"Yes, I agree to receive recurring informational SMS messages from Redline Data Lab about appointment reminders, onboarding, account or service updates, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our Terms and Privacy Policy."
 
 ## Consent Recording
 
