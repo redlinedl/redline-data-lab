@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Request Information — Redline Data Lab</title>
+  <meta name="description" content="Request information about Redline Data Lab services. Optional SMS updates available." />
+  <link rel="canonical" href="https://redline-data.xyz/request-info" />
+  
+  <!-- Performance & Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  
+  <style>
+    :root{
+      /* Color system */
+      --color-bg-light:#ffffff;
+      --color-bg-dark:#0d0d0d;
+      --color-text-light:#1a1a1a;
+      --color-text-dark:#e6e6e6;
+      --color-accent:#ff3232;
+      --color-accent-soft:#ff4040;
+      --color-muted:#888888;
+      --color-surface-light:#f6f6f6;
+      --color-surface-dark:#1a1a1a;
+
+      /* Legacy tokens mapped to new system */
+      --bg:var(--color-bg-light);
+      --surface:var(--color-surface-light);
+      --muted:var(--color-muted);
+      --text:var(--color-text-light);
+      --accent:var(--color-accent);
+      --card-shadow:0 6px 20px rgba(0,0,0,0.06);
+
+      /* Radius, spacing, layout */
+      --radius:12px;
+      --gap:16px;
+      --space-1:8px;
+      --space-2:16px;
+      --space-3:24px;
+      --space-4:32px;
+      --space-5:48px;
+      --space-6:64px;
+      --maxwidth:1080px;
+      --content-width:640px;
+    }
+    [data-theme="dark"]{
+      --bg:var(--color-bg-dark);
+      --surface:var(--color-surface-dark);
+      --muted:#9aa0a6;
+      --text:var(--color-text-dark);
+      --accent:var(--color-accent-soft);
+      --card-shadow:0 6px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Basic reset & layout */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      display:flex;
+      justify-content:center;
+      padding:var(--space-3);
+    }
+    .wrap{
+      width:100%;
+      max-width:var(--maxwidth);
+      margin:var(--space-2);
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:var(--gap);
+      margin-bottom:var(--space-3);
+    }
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      box-shadow:var(--card-shadow);
+      overflow:hidden;
+      background:transparent;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .logo img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+    .title{
+      font-weight:700;font-size:16px;
+    }
+    .mode-toggle{
+      border:0;background:transparent;font-size:20px;cursor:pointer;padding:8px;border-radius:8px;
+    }
+
+    /* Hero card */
+    .hero{
+      background:var(--surface);
+      border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+      padding:var(--space-4);
+      margin-bottom:var(--space-3);
+    }
+    .hero h1{
+      margin:0 0 var(--space-2) 0;
+      font-size:clamp(24px,5vw,34px);
+      line-height:1.15;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:var(--content-width);
+    }
+
+    /* Form */
+    form.contact{
+      background:var(--surface);
+      padding:var(--space-3);
+      border-radius:12px;
+      box-shadow:var(--card-shadow);
+      margin-top:var(--space-2);
+      display:grid;
+      gap:var(--space-2);
+    }
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type=text],input[type=email],input[type=tel],select,textarea{
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.06);
+      background:var(--surface);
+      color:var(--text);
+    }
+    select{
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+    }
+    select option{
+      background:var(--surface);
+      color:var(--text);
+    }
+    textarea{min-height:100px;resize:vertical}
+    .row{display:flex;gap:var(--space-2);flex-wrap:wrap}
+    .small{flex:1 1 160px}
+    .full{flex:1 1 100%}
+    .note{font-size:13px;color:var(--muted);margin-top:6px}
+
+    /* SMS Consent */
+    .sms-consent{
+      background:rgba(255,50,50,0.05);
+      border:1px solid rgba(255,50,50,0.15);
+      border-radius:10px;
+      padding:var(--space-2);
+      margin-top:var(--space-2);
+    }
+    [data-theme="dark"] .sms-consent{
+      background:rgba(255,64,64,0.08);
+      border-color:rgba(255,64,64,0.2);
+    }
+    .sms-consent label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      cursor:pointer;
+      font-size:14px;
+      color:var(--text);
+      margin:0;
+    }
+    .sms-consent input[type="checkbox"]{
+      margin-top:3px;
+      width:18px;
+      height:18px;
+      flex-shrink:0;
+    }
+    .sms-consent-text{
+      flex:1;
+    }
+    .sms-consent-text a{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+
+    /* Button */
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:14px 22px;
+      border-radius:8px;
+      text-decoration:none;
+      display:inline-block;
+      font-weight:600;
+      font-size:15px;
+      border:0;
+      cursor:pointer;
+    }
+
+    /* Footer */
+    footer{margin-top:var(--space-4);font-size:13px;color:var(--muted);text-align:center}
+
+    /* Form validation styles */
+    .field-error{border-color:#dc3545!important;background:rgba(220,53,69,0.05)}
+    .error-message{color:#dc3545;font-size:12px;margin-top:4px;display:none}
+    .field-error + .error-message{display:block}
+
+    /* Loading state */
+    .btn.loading{opacity:0.7;pointer-events:none}
+    .btn.loading::after{content:" ⏳";animation:spin 1s linear infinite}
+
+    /* Success message */
+    .success{
+      display:none;
+      padding:12px;
+      border-radius:10px;
+      background:rgba(0,200,0,0.08);
+      color:green;
+      margin-top:10px;
+    }
+
+    /* Skip link for accessibility */
+    .skip-link{
+      position:fixed;top:-100%;left:6px;background:var(--accent);color:white;
+      padding:8px;text-decoration:none;border-radius:4px;z-index:2100;
+      transition:top 0.1s;
+    }
+    .skip-link:focus{top:6px}
+  </style>
+</head>
+<body>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <div class="wrap" id="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <img src="/assets/site_logo.png" alt="Redline Data Lab" width="44" height="44" loading="eager" decoding="async" />
+        </div>
+        <div>
+          <div class="title">Redline Data Lab</div>
+          <div style="font-size:12px;color:var(--muted)">Stop missing calls and appointments</div>
+        </div>
+      </div>
+
+      <div>
+        <button class="mode-toggle" id="modeToggle" aria-label="Toggle light dark">☀️</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Request Information</h1>
+        <p>Fill out the form below to request information about Redline Data Lab services. You may optionally provide your mobile number and consent to receive SMS updates.</p>
+      </section>
+
+      <section aria-labelledby="form-title">
+        <h2 id="form-title" style="font-size:16px;margin:6px 0 12px 0">Contact Information</h2>
+        <p style="margin:0 0 10px 0;color:var(--muted)">All fields marked with * are required. Mobile number and SMS consent are optional.</p>
+
+        <!-- Netlify-ready form -->
+        <form class="contact" name="request-info" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/request-info">
+          <input type="hidden" name="form-name" value="request-info">
+          <input type="hidden" name="source" value="request-info-page">
+          <input type="hidden" name="consent-copy-version" value="sms-consent-v1.0">
+
+          <!-- honeypot -->
+          <div style="display:none">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </div>
+
+          <div class="row">
+            <div class="full">
+              <label for="name">Full name *</label>
+              <input id="name" name="name" type="text" required placeholder="Alex Johnson" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="full">
+              <label for="business">Business name *</label>
+              <input id="business" name="business" type="text" required placeholder="Your Business Name" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="full">
+              <label for="email">Work email *</label>
+              <input id="email" name="email" type="email" required placeholder="you@company.com" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="full">
+              <label for="phone">Mobile phone (optional)</label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" />
+              <div class="note">Providing your mobile number is optional. If you choose to provide it, you may also consent to receive SMS messages.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="full">
+              <label for="message">Message or request details (optional)</label>
+              <textarea id="message" name="message" placeholder="Tell us about your needs or ask any questions..."></textarea>
+            </div>
+          </div>
+
+          <!-- SMS Consent -->
+          <div class="sms-consent">
+            <label for="sms-consent">
+              <input type="checkbox" id="sms-consent" name="sms-consent" value="true">
+              <div class="sms-consent-text">
+                <strong>Yes, I agree to receive recurring SMS messages from Redline Data Lab about requested service information, appointment reminders, onboarding and account updates, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our <a href="/tos.html" target="_blank" rel="noopener noreferrer">Terms</a> and <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</strong>
+              </div>
+            </label>
+          </div>
+
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px">
+            <button type="submit" class="btn">Submit Request</button>
+            <div class="note">We respond within one business day. No spam, ever.</div>
+          </div>
+
+          <div class="success" id="success">Thank you. Redline Data Lab received your request. If you chose SMS updates, your consent has been recorded.</div>
+        </form>
+      </section>
+
+      <section aria-labelledby="contact-title" style="margin-top:14px">
+        <h2 id="contact-title" style="font-size:16px;margin:6px 0 12px 0">Contact</h2>
+        <p class="note">Email: <a href="mailto:hello@redline-data.xyz">hello@redline-data.xyz</a></p>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="opacity:0.9">© <strong>Redline Data Lab</strong> — stop missing calls and appointments</div>
+      <div style="margin-top:6px"><a href="mailto:hello@redline-data.xyz">hello@redline-data.xyz</a></div>
+      <div style="margin-top:8px;font-size:12px;opacity:0.7">
+        <a href="/request-info">Request Information</a> &nbsp;·&nbsp;
+        <a href="/tos.html">Terms of Service</a> &nbsp;·&nbsp;
+        <a href="/privacy.html">Privacy Policy</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('modeToggle');
+      const saved = localStorage.getItem('rdl-theme') || 'light';
+      const form = document.querySelector('form.contact');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const smsConsent = document.getElementById('sms-consent');
+      const phoneInput = document.getElementById('phone');
+
+      // Theme management
+      function setTheme(theme){
+        if(theme === 'dark'){
+          document.documentElement.setAttribute('data-theme','dark');
+          btn.textContent = '🌙';
+        } else {
+          document.documentElement.setAttribute('data-theme','light');
+          btn.textContent = '☀️';
+        }
+        localStorage.setItem('rdl-theme', theme);
+      }
+
+      setTheme(saved === 'dark' ? 'dark' : 'light');
+
+      btn.addEventListener('click', function(){
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+
+      // Form validation
+      function validateField(field, errorMsg){
+        const errorEl = field.nextElementSibling;
+        if(field.validity.valid){
+          field.classList.remove('field-error');
+          if(errorEl && errorEl.classList.contains('error-message')){
+            errorEl.style.display = 'none';
+          }
+          return true;
+        } else {
+          field.classList.add('field-error');
+          if(errorEl && errorEl.classList.contains('error-message')){
+            errorEl.textContent = errorMsg;
+            errorEl.style.display = 'block';
+          } else {
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.textContent = errorMsg;
+            field.parentNode.insertBefore(error, field.nextSibling);
+          }
+          return false;
+        }
+      }
+
+      // Real-time validation
+      ['name', 'business', 'email'].forEach(fieldName => {
+        const field = document.getElementById(fieldName);
+        if(field){
+          field.addEventListener('blur', function(){
+            let errorMsg = '';
+            if(fieldName === 'name' && !field.value.trim()){
+              errorMsg = 'Please enter your full name';
+            } else if(fieldName === 'business' && !field.value.trim()){
+              errorMsg = 'Please enter your business name';
+            } else if(fieldName === 'email' && !field.validity.valid){
+              errorMsg = 'Please enter a valid email address';
+            }
+            validateField(field, errorMsg);
+          });
+        }
+      });
+
+      // SMS consent validation
+      form.addEventListener('submit', function(e){
+        // If SMS consent is checked, validate phone number
+        if(smsConsent.checked){
+          const phoneValue = phoneInput.value.trim();
+          if(!phoneValue){
+            e.preventDefault();
+            alert('Please provide a mobile phone number to consent to SMS messages.');
+            phoneInput.focus();
+            return;
+          }
+          // Basic US phone format validation
+          const phoneRegex = /^(\+?1[-.\s]?)?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
+          if(!phoneRegex.test(phoneValue)){
+            e.preventDefault();
+            alert('Please enter a valid US mobile phone number.');
+            phoneInput.focus();
+            return;
+          }
+        }
+      });
+
+      // Form submission
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        let isValid = true;
+        
+        // Validate required fields
+        const name = document.getElementById('name');
+        const business = document.getElementById('business');
+        const email = document.getElementById('email');
+        
+        if(!validateField(name, 'Please enter your full name')) isValid = false;
+        if(!validateField(business, 'Please enter your business name')) isValid = false;
+        if(!validateField(email, 'Please enter a valid email address')) isValid = false;
+        
+        // SMS consent validation
+        if(smsConsent.checked){
+          const phoneValue = phoneInput.value.trim();
+          if(!phoneValue){
+            phoneInput.classList.add('field-error');
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.textContent = 'Mobile phone number required for SMS consent';
+            phoneInput.parentNode.insertBefore(error, phoneInput.nextSibling);
+            isValid = false;
+          }
+        }
+        
+        if(!isValid){
+          return;
+        }
+
+        // Show loading state
+        submitBtn.classList.add('loading');
+        submitBtn.textContent = 'Sending...';
+
+        // Prepare data Netlify expects
+        const formData = new FormData(form);
+        if(!formData.get('form-name')){
+          formData.set('form-name', form.getAttribute('name') || 'request-info');
+        }
+
+        const encoded = new URLSearchParams(formData).toString();
+
+        // Send to same path so Netlify Forms can capture it
+        fetch(form.getAttribute('action') || '/request-info', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encoded
+        }).then(function(){
+          // Reset button and show success
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = 'Submit Request';
+
+          const success = document.getElementById('success');
+          if(success){ 
+            success.style.display = 'block';
+            success.scrollIntoView({behavior:'smooth'});
+          }
+
+          // Clear form
+          form.reset();
+        }).catch(function(err){
+          console.error('Form submission failed', err);
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = 'Try again';
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
